@@ -27,6 +27,7 @@ require 'akatus/receiver'
 require 'akatus/service'
 require 'akatus/services/installments'
 require 'akatus/services/payment_options'
+require 'akatus/services/refund'
 require 'akatus/services/transaction'
 require 'akatus/split_fee'
 

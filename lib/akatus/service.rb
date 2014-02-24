@@ -23,10 +23,21 @@ module Akatus
         JSON.parse(data)['resposta']
 
       rescue RestClient::UnprocessableEntity => exc
-        message = JSON.load(exc.response)['resposta']['descricao']
+        message = retrieve_message(exc.response)
         raise Akatus::UnprocessableEntityError.new(message)
       end
 
+    end
+
+    private
+    def retrieve_message(response)
+      resposta = JSON.load(response)['resposta']
+
+      if resposta.include? 'mensagem'
+        resposta['mensagem']
+      else
+        resposta['descricao']
+      end
     end
 
   end

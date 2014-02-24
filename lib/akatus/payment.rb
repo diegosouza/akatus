@@ -6,9 +6,11 @@ module Akatus
 
     attr_accessor :reference, :payer, :items, :payment_method,
                   :weight, :shipping_cost, :discount, :currency,
-                  :id, :status, :transaction_id, :url, :error, :total_amount
+                  :id, :status, :transaction_id, :url, :error,
+                  :total_amount, :refunded
 
     def initialize(opts = {})
+
       options = {
         :items         => [],
         :discount      => 0,
@@ -17,7 +19,13 @@ module Akatus
       }.merge(opts)
       super(options)
 
-      @receiver = Receiver.new({ :email => Akatus.config.email, :api_key => Akatus.config.api_key })
+      @refunded = false
+
+      if options.include? :receiver
+        @receiver = options[:receiver]
+      else
+        @receiver = Receiver.new({ :email => Akatus.config.email, :api_key => Akatus.config.api_key })
+      end
     end
 
     def to_payload

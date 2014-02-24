@@ -23,6 +23,8 @@ Alguns serviços secundários (utilizados apenas para gerenciar a sua conta Akat
     * `Akatus::Services::PaymentOptions#available_with_installments`
 * [Simulação de parcelamento][6]
     * `Akatus::Services::Installments#calculate`
+* [Estorno][7]
+    * `Akatus::Services::Refund#execute`
 
 ### Previstos
 
@@ -33,7 +35,6 @@ Alguns serviços secundários (utilizados apenas para gerenciar a sua conta Akat
 * Consulta de tipos de comércio
 * Envio de documentos
 * Consulta de status de transação
-* Estorno
 
 
 ## Instalação
@@ -67,7 +68,7 @@ Toda transação, seja com boleto bancário, cartão de crédito ou TEF, requer 
 
 Portanto, em primeiro lugar é necessário criar os objetos que contêm estas informações, como foi feito abaixo.
 
-Note que alguns campos possuem restrições de valor ou formato. Estas restrições **não** são verificadas pela gem, você precisará consultá-las no [site da Akatus][7].
+Note que alguns campos possuem restrições de valor ou formato. Estas restrições **não** são verificadas pela gem, você precisará consultá-las no [site da Akatus][3].
 
 ```ruby
 require 'akatus'
@@ -203,6 +204,6 @@ end
   [4]: https://connect.akatus.com/documentacao/api-tef/
   [5]: https://connect.akatus.com/documentacao/api-meios-de-pagamento/
   [6]: https://connect.akatus.com/documentacao/api-parcelamento/
-  [7]: https://connect.akatus.com/documentacao/api-cartao-de-credito/
+  [7]: https://connect.akatus.com/documentacao/api-estorno/
   [8]: https://github.com/kauplus/akatus-demo
   [9]: https://github.com/kauplus/akatus-rails
